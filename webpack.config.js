@@ -1,21 +1,26 @@
-var path = require('path');
+const path = require('path');
 
 module.exports = {
   devServer: {
-    contentBase: path.join(__dirname, 'public'),
+    contentBase: path.resolve(__dirname, 'public'),
     hot: true,
     publicPath: '/',
   },
   devtool: 'inline-source-map',
-  entry: ['./src'],
+  entry: path.resolve(__dirname, 'src'),
+  mode: 'development',
   module: {
     rules: [
       {
         exclude: /node_modules/,
-        loader: 'ts-loader',
-        test: /\.tsx?$/,
+        loader: 'babel-loader',
+        test: /\.(js|ts)x?$/,
       },
     ],
+  },
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist'),
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
