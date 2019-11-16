@@ -1,4 +1,11 @@
+var path = require('path');
+
 module.exports = {
+  devServer: {
+    contentBase: path.join(__dirname, 'public'),
+    hot: true,
+    publicPath: '/',
+  },
   devtool: 'inline-source-map',
   entry: ['./src'],
   module: {
@@ -11,6 +18,6 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.ts', '.tsx'],
+    extensions: ['.ts', '.tsx', '.js'],
   },
 };
