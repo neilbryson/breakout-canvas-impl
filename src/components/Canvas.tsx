@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useRef } from 'react';
 
-import { drawArc } from '../helpers/canvas';
+import { drawBall } from '../helpers/canvas';
 
 export const Canvas: FunctionComponent = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -14,7 +14,8 @@ export const Canvas: FunctionComponent = () => {
     let y = canvas.height - 30;
 
     while (x < canvas.width) {
-      drawArc({ ctx, x, y });
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawBall({ color: '#FF0000', ctx, x, y });
       x += 2;
       y += -2;
     }
